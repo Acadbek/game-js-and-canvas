@@ -9,6 +9,7 @@ const c = canvas.getContext('2d');
 canvas.width = innerWidth;
 canvas.height = innerHeight;
 
+const scoreEl = document.querySelector('#scoreEl');
 class Player {
     constructor(x, y, radius, color) {
         this.x = x;
@@ -140,7 +141,7 @@ function spawnEnemies() {
 
 
 let animateId
-
+let score = 0;
 function animate() {
     animateId = requestAnimationFrame(animate);
     c.fillStyle = 'rgba(0, 0, 0, 0.1)';
@@ -181,10 +182,16 @@ function animate() {
 
             if (dist - enemy.radius - projectile.radius < 1) {
 
+                // increase score
+                // scoreEl.innerText = parseInt(scoreEl.innerText) + 1;
+
+                score += 10;
+                scoreEl.innerText = score;
+
                 for (let i = 0; i < enemy.radius * 2; i++) {
                     particles.push(new Particle(projectile.x, projectile.y,
-                        Math.random() * 2,
-                        enemy.color, { x: (Math.random() - 0.5) * (Math.random() * 8), y: (Math.random() - 0.5) * (Math.random() * 8) }))
+                    Math.random() * 2,
+                    enemy.color, { x: (Math.random() - 0.5) * (Math.random() * 8), y: (Math.random() - 0.5) * (Math.random() * 8) }))
                 }
 
                 if (enemy.radius - 10 > 5) {
@@ -195,6 +202,8 @@ function animate() {
                         projectiles.splice(projectileIndex, 1)
                     }, 0);
                 } else {
+                    score += 20;
+                    scoreEl.innerText = score;
                     setTimeout(() => {
                         enemies.splice(index, 1)
                         projectiles.splice(projectileIndex, 1)

@@ -6,14 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
 </head>
     <style>
-        span{
-            color: #fff;
+        body{
+            margin: 0;
         }
     </style>
 <body>
-    <div><span>Score:</span><span>0</span></div>
+    <div class="fixed text-white text-sm ml-2 select-none"><span>Score: </span><span id="scoreEl">0</span></div>
     <canvas id="canvas"></canvas>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"
