@@ -135,7 +135,7 @@ function spawnEnemies() {
             y: Math.sin(angle) * 2
         }
         enemies.push(new Enemy(x, y, radius, color, velocity))
-    }, Math.random() * 5000);
+    }, Math.random() * 3000);
 }
 
 
