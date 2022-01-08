@@ -1,4 +1,8 @@
 "use strict"
+console.log('%cWelcome to my game!', 'color: red; font-size: 30px; font-weight: bold;')
+console.log('%cPress any key to start', 'color: red; font-size: 30px; font-weight: bold;')
+
+console.log(gsap)
 const canvas = document.querySelector('#canvas');
 const c = canvas.getContext('2d');
 
@@ -65,6 +69,28 @@ class Enemy {
     }
 }
 
+class Particle {
+    constructor(x, y, radius, color, velocity) {
+        this.x = x
+        this.y = y
+        this.radius = radius
+        this.color = color
+        this.velocity = velocity
+    }
+    draw() {
+        c.beginPath();
+        c.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false)
+        c.fillStyle = this.color;
+        c.fill()
+    }
+
+    update() {
+        this.draw()
+        this.x = this.x + this.velocity.x
+        this.y = this.y + this.velocity.y
+    }
+}
+
 let body = document.querySelector('body');
 body.style.backgroundColor = '#000';
 
@@ -74,6 +100,7 @@ const y = canvas.height / 2;
 const player = new Player(x, y, 10, 'white');
 const projectiles = [];
 const enemies = [];
+const particles = [];
 
 function spawnEnemies() {
     setInterval(() => {
@@ -137,10 +164,25 @@ function animate() {
             const dist = Math.hypot(projectile.x - enemy.x, projectile.y - enemy.y);
 
             if (dist - enemy.radius - projectile.radius < 1) {
-                setTimeout(() => {
-                    enemies.splice(index, 1)
-                    projectiles.splice(projectileIndex, 1)
-                }, 0);
+
+                for(let i = 0; i < 8; i++){
+                    particles.push(new Particle(projectile.x, projectile.y, 3,
+                    enemy.color, {x: Math.random() - 0.5, y: Math.random() - 0.5}))
+                }
+
+                if (enemy.radius - 10 > 5) {
+                    gsap.to(enemy, {
+                        radius: enemy.radius - 10
+                    })
+                    setTimeout(() => {
+                        projectiles.splice(projectileIndex, 1)
+                    }, 0);
+                } else {
+                    setTimeout(() => {
+                        enemies.splice(index, 1)
+                        projectiles.splice(projectileIndex, 1)
+                    }, 0);
+                }
             }
         })
     })
