@@ -130,8 +130,8 @@ function spawnEnemies() {
         const angle = Math.atan2(canvas.height / 2 - y, canvas.width / 2 - x);
 
         const velocity = {
-            x: Math.cos(angle),
-            y: Math.sin(angle)
+            x: Math.cos(angle) - 5,
+            y: Math.sin(angle) - 5
         }
         enemies.push(new Enemy(x, y, radius, color, velocity))
     }, 1000);
