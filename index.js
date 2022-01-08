@@ -66,7 +66,7 @@ class Enemy {
 }
 
 let body = document.querySelector('body');
-// body.style.backgroundColor = '#000';
+body.style.backgroundColor = '#000';
 
 const x = canvas.width / 2;
 const y = canvas.height / 2;
@@ -88,7 +88,6 @@ function spawnEnemies() {
         } else {
             x = Math.random() * canvas.width
             y = Math.random() < 0.5 ? 0 - radius : canvas.height + radius;
-            // y = Math.random() * canvas.height;
         }
         const color = 'green';
 
@@ -99,7 +98,6 @@ function spawnEnemies() {
             y: Math.sin(angle)
         }
         enemies.push(new Enemy(x, y, radius, color, velocity))
-        // console.log(enemies)
     }, 1000);
 }
 
@@ -114,7 +112,10 @@ function animate() {
     projectiles.forEach((projectile, index) => {
         projectile.update();
         // Remove projectiles that are off screen
-        if(projectile.x - projectile.radius < 0 || projectile.x - radius > canvas.width) {
+        if (projectile.x + projectile.radius < 0 ||
+            projectile.x - projectile.radius > canvas.width ||
+            projectile.y + projectile.radius < 0 ||
+            projectile.y - projectile.radius > canvas.height) {
             setTimeout(() => {
                 projectiles.splice(index, 1)
             }, 0);
@@ -129,7 +130,6 @@ function animate() {
 
         if (dist - player.radius - player.radius < 1) {
             cancelAnimationFrame(animateId)
-            // body.style.backgroundColor = 'red';
         }
 
         projectiles.forEach((projectile, projectileIndex) => {
