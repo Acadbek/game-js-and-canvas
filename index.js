@@ -44,4 +44,8 @@ const y = canvas.height / 2;
 
 const player = new Player(x, y, 30, 'blue');
 player.draw();
-console.log(player);
+
+addEventListener('click', (event) => {
+    const projectile = new Projectile(event.clientX, event.clientY, 5, 'red', null);
+    projectile.draw();
+})
