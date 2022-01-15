@@ -10,6 +10,7 @@ canvas.width = innerWidth;
 canvas.height = innerHeight;
 
 const scoreEl = document.querySelector('#scoreEl');
+const startGameBtn = document.querySelector('#startGameBtn');
 class Player {
     constructor(x, y, radius, color) {
         this.x = x;
@@ -224,5 +225,19 @@ addEventListener('click', (event) => {
     }
     projectiles.push(new Projectile(canvas.width / 2, canvas.height / 2, 5, 'white', velocity))
 })
-animate();
-spawnEnemies()
+
+startGameBtn.addEventListener('click', () => {
+    animate()
+    spawnEnemies()
+})
+
+
+
+
+
+
+
+
+
+// animate();
+// spawnEnemies()
