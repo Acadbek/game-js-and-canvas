@@ -178,6 +178,7 @@ function animate() {
 
         if (dist - player.radius - player.radius < 1) {
             cancelAnimationFrame(animateId)
+            modalEl.style.display = 'flex';
         }
 
         projectiles.forEach((projectile, projectileIndex) => {
