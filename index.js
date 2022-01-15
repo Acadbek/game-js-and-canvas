@@ -105,7 +105,7 @@ class Particle {
 }
 
 let body = document.querySelector('body');
-body.style.backgroundColor = '#000';
+// body.style.backgroundColor = '#000';
 
 const x = canvas.width / 2;
 const y = canvas.height / 2;
