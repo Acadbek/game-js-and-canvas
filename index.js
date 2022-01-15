@@ -121,7 +121,8 @@ function init () {
     projectiles = [];
     enemies = [];
     particles = [];
-    score.innerHTML = score;
+    score = 0;
+    scoreEl.innerHTML = score;
     bigScoreEl.innerHTML = score;
 }
 
