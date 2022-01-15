@@ -105,7 +105,7 @@ class Particle {
 }
 
 let body = document.querySelector('body');
-// body.style.backgroundColor = '#000';
+body.style.backgroundColor = '#000';
 
 const x = canvas.width / 2;
 const y = canvas.height / 2;
@@ -185,16 +185,10 @@ function animate() {
 
             if (dist - enemy.radius - projectile.radius < 1) {
 
-                // increase score
-                // scoreEl.innerText = parseInt(scoreEl.innerText) + 1;
-
-                // score += 10;
-                // scoreEl.innerText = score;
-
                 for (let i = 0; i < enemy.radius * 2; i++) {
                     particles.push(new Particle(projectile.x, projectile.y,
-                    Math.random() * 2,
-                    enemy.color, { x: (Math.random() - 0.5) * (Math.random() * 8), y: (Math.random() - 0.5) * (Math.random() * 8) }))
+                        Math.random() * 2,
+                        enemy.color, { x: (Math.random() - 0.5) * (Math.random() * 8), y: (Math.random() - 0.5) * (Math.random() * 8) }))
                 }
 
                 if (enemy.radius - 10 > 5) {
@@ -232,6 +226,7 @@ startGameBtn.addEventListener('click', () => {
     animate()
     spawnEnemies()
     modalEl.style.display = 'none'
+    body.style.backgroundColor = 'red'
 })
 
 
