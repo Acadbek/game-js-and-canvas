@@ -1,8 +1,8 @@
 "use strict"
 console.log('%cWelcome to my game!', 'color: red; font-size: 30px; font-weight: bold;')
-console.log('%cPress any key to start', 'color: red; font-size: 30px; font-weight: bold;')
+// console.log('%cPress any key to start', 'color: red; font-size: 30px; font-weight: bold;')
 
-console.log(gsap)
+// console.log(gsap)
 const canvas = document.querySelector('#canvas');
 const c = canvas.getContext('2d');
 
@@ -185,8 +185,8 @@ function animate() {
                 // increase score
                 // scoreEl.innerText = parseInt(scoreEl.innerText) + 1;
 
-                score += 10;
-                scoreEl.innerText = score;
+                // score += 10;
+                // scoreEl.innerText = score;
 
                 for (let i = 0; i < enemy.radius * 2; i++) {
                     particles.push(new Particle(projectile.x, projectile.y,
@@ -195,6 +195,8 @@ function animate() {
                 }
 
                 if (enemy.radius - 10 > 5) {
+                    score += 100
+                    scoreEl.innerHTML = score
                     gsap.to(enemy, {
                         radius: enemy.radius - 10
                     })
