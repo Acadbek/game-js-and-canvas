@@ -13,6 +13,10 @@ const scoreEl = document.querySelector('#scoreEl');
 const startGameBtn = document.querySelector('#startGameBtn');
 const modalEl = document.querySelector('#modalEl');
 const bigScoreEl = document.querySelector('#bigScoreEl');
+const created = document.querySelector('#created');
+
+created.style.color = 'rgb(198, 198, 198)';
+created.style.marginTop = '20px !important';
 
 class Player {
     constructor(x, y, radius, color) {
