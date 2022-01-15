@@ -226,7 +226,7 @@ startGameBtn.addEventListener('click', () => {
     animate()
     spawnEnemies()
     modalEl.style.display = 'none'
-    body.style.backgroundColor = 'red'
+    // body.style.backgroundColor = 'red'
 })
 
 
