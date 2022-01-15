@@ -120,7 +120,7 @@ let projectiles = [];
 let enemies = [];
 let particles = [];
 
-function init () {
+function init() {
     player = new Player(x, y, 10, 'white');
     projectiles = [];
     enemies = [];
